@@ -1,0 +1,150 @@
+<html>
+   <head>
+       <title>The Codingdojo ColorClicker!</title>
+       <script type="text/javascript" src='http://code.jquery.com/jquery-1.10.2.min.js'></script> 
+       <script type="text/javascript">
+        $(document).ready(function() {
+        	$('form').submit(function(){
+    			return false;
+			});
+          function cardMaker() {
+          	   var first = $('#firstname').val();
+ 				       var last = $('#lastname').val();
+ 				       var description = $('#description').val();
+          	$('#contact-cards').append(
+          		'<div class="newcard">' +
+          		'<h2>' + first + ' ' + last + '</h2>' +
+          		'<p class="pClick">' + 'Click to see description!' + '</p>' +
+              '<p class="pDesc">' + description + '</p>' +
+          		'</div>'
+          		)
+            $('.pDesc').hide(0);
+            $('.pClick').click(function() {
+              $('.pClick').hide(0);
+              $('.pDesc').show(0);
+            })
+            $('button').click(function() {
+              $('.pClick').show(0)
+            })
+          };
+          $(document).on('click', 'button', function(){
+          	cardMaker();
+            $('form').trigger('reset');
+          });
+      });
+      </script>
+
+      <style type="text/css">
+          *{
+             font-family: 'Helvetica Neue';
+             margin: 0px;
+             padding: 0px;
+          }
+          #container {
+          	background-color: #D6EBF2;
+          	margin: 0px auto;
+          	width: 1200px;
+          }
+          #header {
+          	background-color: #4E6770;
+          	width: 1200px;
+          	height: 80px;
+          	vertical-align: top;
+          	border-bottom: 2px double #171E21;
+          }
+          	#header h1 {
+          	text-align: center;
+          	color: #DBE0E2;
+          	position: relative;
+          	top: 20px;
+          	}
+        input {
+        	display: inline-block;
+        	margin-left: 15px;
+        	width: 165px;
+
+        }
+        .block {
+        	margin-left: 15px;
+        	margin-top: 30px;
+        }
+        #description {
+        	width: 300px;
+        	height: 150px;
+        }
+        label {
+        	vertical-align: top;
+        }
+        button {
+        	margin-left: 220px;
+        	margin-top: 15px;
+        	width: 100px;
+        	height: 20px;
+        	border-style: outset;
+        	font-size: 14px;
+        }
+        textarea {
+        	width: 300px;
+        	margin-left: 10px;
+        }
+        .newcard {
+        	width: 500px;
+        	height: 300px;
+        	border: 2px solid black;
+        	margin: 10px;
+        	display: inline-block;
+        	background-color: #F2F2F2;
+        	color: #202020;
+ 			    vertical-align: top;
+        }
+        .newcard h2 {
+ 			    text-align: center;
+ 			    margin: 5px;
+        }
+        .newcard p {
+        	margin-top: 10px;
+        	margin-left: 10px;
+        	font-size: 18px;
+        	width: 480px;
+        }
+        #contact-entry{
+        	display: inline-block;
+        	height: 800px;
+        	background-color: #D6EBF2;
+        }
+        #contact-cards {
+        	width: 600px;
+        	margin-left: 175px;
+        	display: inline-block;
+        	vertical-align: top;;
+        }
+      </style>
+   </head>
+
+   <body>
+   		<div id='container'>
+   			<div id='header'>
+   				<h1>Profiles of the Dojo<h1>
+   			</div>
+   			<div id='contact-entry'>
+          <form>
+ 				     <div class="block">
+ 					      <label for="firstname">First Name:
+ 					      <input type="text" id="firstname" name="firstname" placeholder="First Name"></label>
+ 				     </div>
+ 				     <div class="block">
+ 					      <label for="lastname">Last Name:
+ 					      <input type="text" id="lastname" name="lastname" placeholder="Last Name"></label>
+ 				     </div>
+ 				     <div class="block">
+ 					      <label for="description">Description:
+      				  <textarea id="description" name="description" placeholder="Enter a description."></textarea></label>
+      			</div>
+   				   <button>Add User</button>
+             </form>
+   			</div>
+   			<div id='contact-cards'>
+   			</div>
+   		</div>
+   </body>
+</html>
